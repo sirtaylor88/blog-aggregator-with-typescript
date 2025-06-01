@@ -1,0 +1,32 @@
+{
+    "name": "blog-aggregator-with-typescript",
+    "version": "1.0.0",
+    "description": "A RSS feed aggregator in Go. This CLI tool allows users to:",
+    "main": "index.js",
+    "scripts": {
+        "lint": "npx eslint src",
+        "start": "tsx ./src/index.ts",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/sirtaylor88/blog-aggregator-with-typescript.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type": "module",
+    "bugs": {
+        "url": "https://github.com/sirtaylor88/blog-aggregator-with-typescript/issues"
+    },
+    "homepage": "https://github.com/sirtaylor88/blog-aggregator-with-typescript#readme",
+    "devDependencies": {
+        "@eslint/js": "^9.28.0",
+        "@types/node": "^22.15.29",
+        "eslint": "^9.28.0",
+        "globals": "^16.2.0",
+        "tsx": "^4.19.4",
+        "typescript": "^5.8.3",
+        "typescript-eslint": "^8.33.0"
+    }
+}
