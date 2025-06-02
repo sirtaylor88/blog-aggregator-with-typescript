@@ -1,8 +1,15 @@
-import { readConfig, setUser } from "./config.js";
+import { commands, runCommand } from "./commands/commands.js";
+import { argv, exit } from 'node:process';
 
 function main() {
-    setUser('Tai');
-    console.log(readConfig());
+    if (argv.length < 3) {
+        console.log("Missing command!");
+        exit(1);
+    }
+
+    const command = argv[2];
+    const args = argv.slice(3);
+    runCommand(commands, command, ...args);
 }
 
 main();

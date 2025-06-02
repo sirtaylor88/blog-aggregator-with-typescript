@@ -26,6 +26,7 @@ export function setUser(user: string): void {
     const cfg = readConfig();
     cfg.currentUserName = user;
     writeConfig(cfg);
+    console.log(cfg);
 }
 
 function validateConfig(rawConfig: any): Config {
