@@ -4,7 +4,9 @@
     "description": "A RSS feed aggregator in Go. This CLI tool allows users to:",
     "main": "index.js",
     "scripts": {
+        "generate": "drizzle-kit generate",
         "lint": "npx eslint src",
+        "migrate": "drizzle-kit migrate",
         "start": "tsx ./src/index.ts",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
@@ -23,10 +25,15 @@
     "devDependencies": {
         "@eslint/js": "^9.28.0",
         "@types/node": "^22.15.29",
+        "drizzle-kit": "^0.31.1",
         "eslint": "^9.28.0",
         "globals": "^16.2.0",
         "tsx": "^4.19.4",
         "typescript": "^5.8.3",
         "typescript-eslint": "^8.33.0"
+    },
+    "dependencies": {
+        "drizzle-orm": "^0.44.1",
+        "postgres": "^3.4.7"
     }
 }
