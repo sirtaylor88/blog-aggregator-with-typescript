@@ -1,27 +1,29 @@
 import { handlerLogin } from "./command_login.js";
+import { handlerRegister } from "./command_register.js";
 
 
-export type CommandHandler = (cmdName: string, ...args: string[]) => void;
+export type CommandHandler = (cmdName: string, ...args: string[]) => Promise<void>;
 export type CommandsRegistry = {
     [key: string]: CommandHandler;
 }
 
-export function registerCommand(
+export async function registerCommand(
     registry: CommandsRegistry, cmdName: string, handler: CommandHandler
-): void {
+): Promise<void> {
     registry[cmdName] = handler;
 }
 
-export function runCommand(
+export async function runCommand(
     registry: CommandsRegistry, cmdName: string, ...args: string[]
-): void {
+): Promise<void> {
     if (!(cmdName in registry)) {
        throw new Error('Invalid command!');
     }
 
-    registry[cmdName](cmdName, ...args);
+    await registry[cmdName](cmdName, ...args);
 }
 
 export const commands: CommandsRegistry = {
-    "login": handlerLogin
+    "login": handlerLogin,
+    "register": handlerRegister,
 }

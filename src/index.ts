@@ -1,7 +1,7 @@
 import { commands, runCommand } from "./commands/commands.js";
 import { argv, exit } from 'node:process';
 
-function main() {
+async function main() {
     if (argv.length < 3) {
         console.log("Missing command!");
         exit(1);
