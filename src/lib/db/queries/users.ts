@@ -14,3 +14,7 @@ export async function getUser(name: string) {
     }
     return results[0];
 }
+
+export async function deleteUsers() {
+    await db.delete(users);
+}

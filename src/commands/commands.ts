@@ -1,5 +1,6 @@
 import { handlerLogin } from "./command_login.js";
 import { handlerRegister } from "./command_register.js";
+import { handlerReset } from "./command_reset.js";
 
 
 export type CommandHandler = (cmdName: string, ...args: string[]) => Promise<void>;
@@ -24,6 +25,7 @@ export async function runCommand(
 }
 
 export const commands: CommandsRegistry = {
-    "login": handlerLogin,
-    "register": handlerRegister,
+    'login': handlerLogin,
+    'register': handlerRegister,
+    'reset': handlerReset,
 }
