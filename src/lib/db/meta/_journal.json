@@ -8,6 +8,13 @@
       "when": 1748977568707,
       "tag": "0000_black_mesmero",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1749279386150,
+      "tag": "0001_slimy_weapon_omega",
+      "breakpoints": true
     }
   ]
 }
