@@ -7,6 +7,11 @@ export async function createUser(name: string) {
     return result;
 }
 
+export async function getUsers() {
+    const results = await db.select().from(users);
+    return results;
+}
+
 export async function getUser(name: string) {
     const results = await db.select().from(users).where(eq(users.name, name));
     if (results.length === 0) {

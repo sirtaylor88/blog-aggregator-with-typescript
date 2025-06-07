@@ -1,6 +1,7 @@
 import { handlerLogin } from "./command_login.js";
 import { handlerRegister } from "./command_register.js";
 import { handlerReset } from "./command_reset.js";
+import { handlerUsers } from "./command_users.js";
 
 
 export type CommandHandler = (cmdName: string, ...args: string[]) => Promise<void>;
@@ -28,4 +29,5 @@ export const commands: CommandsRegistry = {
     'login': handlerLogin,
     'register': handlerRegister,
     'reset': handlerReset,
+    'users': handlerUsers
 }
