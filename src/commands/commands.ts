@@ -1,4 +1,4 @@
-import { handlerAggregate } from "./command_agg.js";
+import { handlerAggregate } from "./command_aggregate.js";
 import { handlerLogin } from "./command_login.js";
 import { handlerRegister } from "./command_register.js";
 import { handlerReset } from "./command_reset.js";
