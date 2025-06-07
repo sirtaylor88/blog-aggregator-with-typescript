@@ -1,3 +1,4 @@
+import { handlerAggregator } from "./command_agg.js";
 import { handlerLogin } from "./command_login.js";
 import { handlerRegister } from "./command_register.js";
 import { handlerReset } from "./command_reset.js";
@@ -26,6 +27,7 @@ export async function runCommand(
 }
 
 export const commands: CommandsRegistry = {
+    'agg': handlerAggregator,
     'login': handlerLogin,
     'register': handlerRegister,
     'reset': handlerReset,
