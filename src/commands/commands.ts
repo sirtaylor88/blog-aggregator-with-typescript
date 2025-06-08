@@ -1,5 +1,6 @@
 import { handlerAddFeed } from "./command_add_feed.js";
 import { handlerAggregate } from "./command_aggregate.js";
+import { handlerFeeds } from "./command_feeds.js";
 import { handlerLogin } from "./command_login.js";
 import { handlerRegister } from "./command_register.js";
 import { handlerReset } from "./command_reset.js";
@@ -30,6 +31,7 @@ export async function runCommand(
 export const commands: CommandsRegistry = {
     'addfeed': handlerAddFeed,
     'agg': handlerAggregate,
+    'feeds': handlerFeeds,
     'login': handlerLogin,
     'register': handlerRegister,
     'reset': handlerReset,

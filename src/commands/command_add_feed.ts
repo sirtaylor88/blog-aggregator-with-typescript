@@ -4,7 +4,7 @@ import { getUser, User } from '../lib/db/queries/users';
 import { readConfig } from '../config';
 
 function printFeed(feed: Feed, user: User) {
-    console.log(`${user.name}: ${feed.name} (${feed.url})`)
+    console.log(`${user.name}: ${feed.name} (${feed.url})`);
 }
 
 export async function handlerAddFeed(cmdName: string, ...args: string[]): Promise<void> {
