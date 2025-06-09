@@ -4,12 +4,12 @@ import { getUser } from '../lib/db/queries/users';
 import { getFeedFollowsForUser } from '../lib/db/queries/feed_follows';
 
 export async function handlerFollowing(cmdName: string, ...args: string[]): Promise<void> {
-    const cfg = readConfig()
-    const user = await getUser(cfg.currentUserName);
+    const cfg = readConfig();
+    const userName = cfg.currentUserName;
+    const user = await getUser(userName);
 
-    if (user === undefined) {
-        console.log('Action needs login!')
-        exit(1);
+    if (!user) {
+        throw new Error(`User ${userName} not found`);
     }
 
     const feedFollows = await getFeedFollowsForUser(user);

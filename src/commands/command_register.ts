@@ -9,7 +9,7 @@ export async function handlerRegister(cmdName: string, ...args: string[]): Promi
     }
 
     const user = await getUser(args[0]);
-    if (user === undefined) {
+    if (!user) {
         await createUser(args[0]);
         setUser(args[0]);
         console.log('User registered successfully!');

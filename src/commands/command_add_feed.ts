@@ -14,13 +14,12 @@ export async function handlerAddFeed(cmdName: string, ...args: string[]): Promis
         exit(1);
     }
 
-    const cfg = readConfig()
+    const cfg = readConfig();
+    const userName = cfg.currentUserName;
+    const user = await getUser(userName);
 
-    const user = await getUser(cfg.currentUserName);
-
-    if (user === undefined) {
-        console.log('Action needs login!')
-        exit(1);
+    if (!user) {
+        throw new Error(`User ${userName} not found`);
     }
 
     const feed = await createFeed(args[0], args[1], user);

@@ -10,17 +10,16 @@ export async function handlerFollow(cmdName: string, ...args: string[]): Promise
         exit(1);
     }
 
-    const cfg = readConfig()
+    const cfg = readConfig();
+    const userName = cfg.currentUserName;
+    const user = await getUser(userName);
 
-    const user = await getUser(cfg.currentUserName);
-
-    if (user === undefined) {
-        console.log('Action needs login!')
-        exit(1);
+    if (!user) {
+        throw new Error(`User ${userName} not found`);
     }
 
     const feed = await getFeed(args[0]);
-    if (feed === undefined) {
+    if (!feed) {
         console.log('Unknown feed!')
         exit(1);
     }

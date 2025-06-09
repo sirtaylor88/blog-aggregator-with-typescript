@@ -8,7 +8,7 @@ export async function handlerLogin(cmdName: string, ...args: string[]): Promise<
         exit(1);
     }
     const user = await getUser(args[0]);
-    if (user === undefined) {
+    if (!user) {
         console.log('User does not exists!');
         exit(1);
     }
