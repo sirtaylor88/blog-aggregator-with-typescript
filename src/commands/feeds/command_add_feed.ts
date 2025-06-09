@@ -1,7 +1,7 @@
 import { exit } from 'node:process';
-import { createFeed, Feed } from '../lib/db/queries/feeds';
-import { User } from '../lib/db/queries/users';
-import { createFeedFollow } from '../lib/db/queries/feed_follows';
+import { createFeed, Feed } from '../../lib/db/queries/feeds';
+import { User } from '../../lib/db/queries/users';
+import { createFeedFollow } from '../../lib/db/queries/feed_follows';
 
 function printFeed(feed: Feed, user: User) {
     console.log(`${user.name}: ${feed.name} (${feed.url})`);

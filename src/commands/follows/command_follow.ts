@@ -1,7 +1,7 @@
 import { exit } from 'node:process';
-import { User } from '../lib/db/queries/users';
-import { createFeedFollow } from '../lib/db/queries/feed_follows';
-import { getFeed } from '../lib/db/queries/feeds';
+import { User } from '../../lib/db/queries/users';
+import { createFeedFollow } from '../../lib/db/queries/feed_follows';
+import { getFeed } from '../../lib/db/queries/feeds';
 
 export async function handlerFollow(cmdName: string, user: User, ...args: string[]): Promise<void> {
     if (args.length == 0) {

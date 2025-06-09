@@ -1,5 +1,5 @@
 import { inspect } from "node:util";
-import { fetchFeed } from "../api/feed.js";
+import { fetchFeed } from "../../api/feed.js";
 import { exit } from 'node:process';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

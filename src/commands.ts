@@ -1,4 +1,4 @@
-import { User } from "../lib/db/queries/users";
+import { User } from "./lib/db/queries/users";
 
 
 export type CommandHandler = (cmdName: string, ...args: string[]) => Promise<void>;

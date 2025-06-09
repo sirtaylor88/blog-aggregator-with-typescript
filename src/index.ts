@@ -1,13 +1,13 @@
-import { handlerAddFeed } from "./commands/command_add_feed.js";
-import { handlerAggregate } from "./commands/command_aggregate.js";
-import { handlerFeeds } from "./commands/command_feeds.js";
-import { handlerFollow } from "./commands/command_follow.js";
-import { handlerFollowing } from "./commands/command_followings.js";
-import { handlerLogin } from "./commands/command_login.js";
-import { handlerRegister } from "./commands/command_register.js";
-import { handlerReset } from "./commands/command_reset.js";
+import { handlerAddFeed } from "./commands/feeds/command_add_feed.js";
+import { handlerAggregate } from "./commands/feeds/command_aggregate.js";
+import { handlerFeeds } from "./commands/feeds/command_feeds.js";
+import { handlerFollow } from "./commands/follows/command_follow.js";
+import { handlerFollowing } from "./commands/follows/command_followings.js";
+import { handlerLogin } from "./commands/auth/command_login.js";
+import { handlerRegister } from "./commands/auth/command_register.js";
+import { handlerReset } from "./commands/db/command_reset.js";
 import { handlerUsers } from "./commands/command_users.js";
-import { CommandsRegistry, registerCommand, runCommand } from "./commands/commands.js";
+import { CommandsRegistry, registerCommand, runCommand } from "./commands.js";
 import { argv, exit } from 'node:process';
 import { middlewareLoggedIn } from "./middleware.js";
 

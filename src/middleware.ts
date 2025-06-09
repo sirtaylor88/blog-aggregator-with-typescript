@@ -1,4 +1,4 @@
-import { UserCommandHandler } from "./commands/commands";
+import { UserCommandHandler } from "./commands";
 import { readConfig } from "./config";
 import { getUser } from "./lib/db/queries/users";
 
