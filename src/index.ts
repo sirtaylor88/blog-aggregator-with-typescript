@@ -7,8 +7,9 @@ import { handlerLogin } from "./commands/command_login.js";
 import { handlerRegister } from "./commands/command_register.js";
 import { handlerReset } from "./commands/command_reset.js";
 import { handlerUsers } from "./commands/command_users.js";
-import { registerCommand, runCommand } from "./commands/commands.js";
+import { CommandsRegistry, registerCommand, runCommand } from "./commands/commands.js";
 import { argv, exit } from 'node:process';
+import { middlewareLoggedIn } from "./middleware.js";
 
 async function main() {
     if (argv.length < 3) {
@@ -16,12 +17,12 @@ async function main() {
         exit(1);
     }
 
-    const registryCommand = {}
-    registerCommand(registryCommand, 'addfeed', handlerAddFeed);
+    const registryCommand: CommandsRegistry = {}
+    registerCommand(registryCommand, 'addfeed', middlewareLoggedIn(handlerAddFeed));
     registerCommand(registryCommand, 'agg', handlerAggregate);
     registerCommand(registryCommand, 'feeds', handlerFeeds);
-    registerCommand(registryCommand, 'follow', handlerFollow);
-    registerCommand(registryCommand, 'following', handlerFollowing);
+    registerCommand(registryCommand, 'follow', middlewareLoggedIn(handlerFollow));
+    registerCommand(registryCommand, 'following', middlewareLoggedIn(handlerFollowing));
     registerCommand(registryCommand, 'login', handlerLogin);
     registerCommand(registryCommand, 'register', handlerRegister);
     registerCommand(registryCommand, 'reset', handlerReset);

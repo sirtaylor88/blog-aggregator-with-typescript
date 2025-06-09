@@ -8,18 +8,10 @@ function printFeed(feed: Feed, user: User) {
     console.log(`${user.name}: ${feed.name} (${feed.url})`);
 }
 
-export async function handlerAddFeed(cmdName: string, ...args: string[]): Promise<void> {
+export async function handlerAddFeed(cmdName: string, user: User, ...args: string[]): Promise<void> {
     if (args.length < 2) {
         console.log('Need both feed parameters: <name> & <url> !');
         exit(1);
-    }
-
-    const cfg = readConfig();
-    const userName = cfg.currentUserName;
-    const user = await getUser(userName);
-
-    if (!user) {
-        throw new Error(`User ${userName} not found`);
     }
 
     const feed = await createFeed(args[0], args[1], user);
