@@ -8,7 +8,7 @@ export type Feed = typeof feeds.$inferSelect;
 export type FeedWithUserName = {
     name: string;
     url: string;
-    userName: string
+    userName: string;
 }
 
 export async function getFeeds(): Promise<FeedWithUserName[]> {
@@ -16,7 +16,15 @@ export async function getFeeds(): Promise<FeedWithUserName[]> {
       name: feeds.name,
       url: feeds.url,
       userName: users.name,
-    }).from(feeds).innerJoin(users, eq(feeds.userId, users.id))
+    }).from(feeds).innerJoin(users, eq(feeds.userId, users.id));
+}
+
+export async function getFeed(url: string): Promise<Feed | undefined> {
+    const results = await db.select().from(feeds).where(eq(feeds.url, url));
+    if (results.length === 0) {
+        return;
+    }
+    return results[0];
 }
 
 export async function createFeed(name: string, url: string, user: User): Promise<Feed> {
