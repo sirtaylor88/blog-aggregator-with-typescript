@@ -1,6 +1,5 @@
 import { exit } from 'node:process';
-import { readConfig } from '../config';
-import { getUser, User } from '../lib/db/queries/users';
+import { User } from '../lib/db/queries/users';
 import { createFeedFollow } from '../lib/db/queries/feed_follows';
 import { getFeed } from '../lib/db/queries/feeds';
 
