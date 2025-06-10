@@ -10,6 +10,7 @@ import { handlerUsers } from "./commands/command_users.js";
 import { CommandsRegistry, registerCommand, runCommand } from "./commands.js";
 import { argv, exit } from 'node:process';
 import { middlewareLoggedIn } from "./middleware.js";
+import { handlerUnfollow } from "./commands/follows/command_unfollow.js";
 
 async function main() {
     if (argv.length < 3) {
@@ -26,6 +27,7 @@ async function main() {
     registerCommand(registryCommand, 'login', handlerLogin);
     registerCommand(registryCommand, 'register', handlerRegister);
     registerCommand(registryCommand, 'reset', handlerReset);
+    registerCommand(registryCommand, 'unfollow', middlewareLoggedIn(handlerUnfollow));
     registerCommand(registryCommand, 'users', handlerUsers);
 
 
