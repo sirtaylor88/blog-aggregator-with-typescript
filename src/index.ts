@@ -11,6 +11,7 @@ import { CommandsRegistry, registerCommand, runCommand } from "./commands.js";
 import { argv, exit } from 'node:process';
 import { middlewareLoggedIn } from "./middleware.js";
 import { handlerUnfollow } from "./commands/follows/command_unfollow.js";
+import { handlerBrowse } from "./commands/posts/command_browse.js";
 
 async function main() {
     if (argv.length < 3) {
@@ -21,6 +22,7 @@ async function main() {
     const registryCommand: CommandsRegistry = {}
     registerCommand(registryCommand, 'addfeed', middlewareLoggedIn(handlerAddFeed));
     registerCommand(registryCommand, 'agg', handlerAggregate);
+    registerCommand(registryCommand, 'browse', middlewareLoggedIn(handlerBrowse));
     registerCommand(registryCommand, 'feeds', handlerFeeds);
     registerCommand(registryCommand, 'follow', middlewareLoggedIn(handlerFollow));
     registerCommand(registryCommand, 'following', middlewareLoggedIn(handlerFollowing));

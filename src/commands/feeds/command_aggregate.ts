@@ -1,6 +1,7 @@
 import { fetchFeed } from "../../api/feed.js";
 import { exit } from 'node:process';
 import { getNextFeedToFetch, markFeedFetched } from "../../lib/db/queries/feeds.js";
+import { createPost, NewPost } from "../../lib/db/queries/posts.js";
 
 async function scrapeFeeds(): Promise<void> {
     const feed = await getNextFeedToFetch();
@@ -9,6 +10,21 @@ async function scrapeFeeds(): Promise<void> {
     }
     markFeedFetched(feed.id);
     const rssFeed = await fetchFeed(feed.url);
+    for (const item of rssFeed.channel.item) {
+        console.log(`Found post: %s`, item.title);
+
+        const now = new Date();
+
+        await createPost({
+            url: item.link,
+            feedId: feed.id,
+            title: item.title,
+            createdAt: now,
+            updatedAt: now,
+            description: item.description,
+            publishedAt: new Date(item.pubDate),
+            } satisfies NewPost);
+    }
     console.log(`Feed ${feed.name} collected:`)
     for (const item of rssFeed.channel.item) {
         console.log(`- ${item.title}`);
@@ -41,7 +57,6 @@ function handleError(err: unknown) {
     console.error(`Error scraping feeds: ${err instanceof Error ? err.message : err}`);
 }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function handlerAggregate(cmdName: string, ...args: string[]): Promise<void> {
     if (args.length !== 1) {
         throw new Error(`usage: ${cmdName} <time_between_reqs>`);
